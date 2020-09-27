@@ -13,12 +13,13 @@ body {
 .form {   
     text-align:center;
     display: flex;
-    padding-top: 50px;
+    padding-top: 30px;
     justify-content: center;
 }
 .field {
     box-sizing: border-box;
-    width: 200px;
+    min-width: 80px;
+    max-width: 200px;
     height: 50px;
     font-size: 36px;
     font-family: roboto;
@@ -34,12 +35,12 @@ body {
 
 /* How many point you need sign */
 .cover {
-    margin-top: 30px;
+    margin-top: 25px;
     align-items: center;;
     display: flex;
     justify-content: center;
     font-family: roboto;
-    font-size: 28px;
+    font-size: 24px;
     color: #fff;
 }
 .points {
