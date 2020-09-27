@@ -1,5 +1,5 @@
 const placeForProblem = document.querySelector('.problem')
-const ourForm = document.querySelector('.form') 
+const ourForm = document.querySelector('.form')
 const field = document.querySelector('.field')
 const points = document.querySelector('.points')
 const sign = document.querySelector('.sign')
@@ -15,9 +15,9 @@ let state = {
 
 function updateProblem () {
     state.currentProblem = generateProblem()
-    
+
     placeForProblem.innerHTML = `${state.currentProblem.randNumbOne} ${state.currentProblem.operator} ${state.currentProblem.randNumbTwo}`
-    
+
     var x = Math.floor(Math.random() * 200);
     var y = Math.floor(Math.random() * 200);
     var z = Math.floor(Math.random() * 200);
@@ -52,7 +52,7 @@ function submitFunction(event) {
     if (p.operator == "+") correctAnswer = p.randNumbOne + p.randNumbTwo
     if (p.operator == "-") correctAnswer = p.randNumbOne - p.randNumbTwo
     if (p.operator == "x") correctAnswer = p.randNumbOne * p.randNumbTwo
-    
+
     if (field.value == correctAnswer) {
         updateProblem ()
         field.value = ''
@@ -94,7 +94,7 @@ function pressButton () {
     field.value = ''
 }
 
-function resetGame () { 
+function resetGame () {
     document.getElementById("send").disabled = true
     document.body.classList.add("overlay-active");
 
@@ -111,7 +111,7 @@ function resetGame () {
     items =  document.getElementById('7'); items.style.backgroundColor = '#fff';
     items =  document.getElementById('8'); items.style.backgroundColor = '#fff';
     items =  document.getElementById('9'); items.style.backgroundColor = '#fff';
-    items =  document.getElementById('10'); items.style.backgroundColor = '#fff'; 
+    items =  document.getElementById('10'); items.style.backgroundColor = '#fff';
 
     items =  document.getElementById('1' + '-fail'); items.style.backgroundColor = '#fff';
     items =  document.getElementById('2' + '-fail'); items.style.backgroundColor = '#fff';
