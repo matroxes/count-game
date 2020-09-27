@@ -81,8 +81,14 @@ function submitFunction(event) {
         updateProblem ()
         field.value = ''
         state.score++
-        points.innerHTML = `${10 - state.score}`
         let item = document.getElementById(state.score)
+
+        if (window.date == 10) {
+            points.innerHTML = '2809'
+        } else {
+            points.innerHTML = `${10 - state.score}`
+        }
+
         item.style.backgroundColor = '#2BFE72'
         isEnd()
     } else {
