@@ -51,7 +51,7 @@ function generateProblem() {
     console.log(date);
     if (date == 8) {
     return {
-        randNumbOne: 27,
+        randNumbOne: 28,
         randNumbTwo: "09",
         operator: ['+', '-', 'x'][generateNumber(2)]
     }
