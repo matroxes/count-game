@@ -84,7 +84,7 @@ function submitFunction(event) {
         let item = document.getElementById(state.score)
 
         if (window.date == 10) {
-            points.innerHTML = '2809'
+            points.innerHTML = '608ᘔ'
         } else {
             points.innerHTML = `${10 - state.score}`
         }
