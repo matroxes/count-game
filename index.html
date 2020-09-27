@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="overlay-active">
+    <div class="main-ui">
+        <p class="problem"></p>
+        <form class="form">
+            <input type="number" class="field" autocomplete="off" autofocus id="input">
+            <button class="submit" id="send">Ответить</button>
+        </form>
+
+        <div class="cover"><span class="points">10</span><p>очков до следующего уровня</p></div>
+    <div class="boxes">
+        <div id="1" class="box"></div>
+        <div id="2" class="box"></div>
+        <div id="3" class="box"></div>
+        <div id="4" class="box"></div>
+        <div id="5" class="box"></div>
+        <div id="6" class="box"></div>
+        <div id="7" class="box"></div>
+        <div id="8" class="box"></div>
+        <div id="9" class="box"></div>
+        <div id="10" class="box"></div>
+    </div>
+    <div class="container boxes">
+        <div id="1-fail" class="box box-fail"></div>
+        <div id="2-fail" class="box box-fail"></div>
+        <div id="3-fail" class="box box-fail"></div>
+    </div>
+</div>
+
+<div class="overlay">
+    <div class="overlay-inner">
+        <p class="sign">Привет!</p>
+        <button class="continue" id="btn">Играть</button>
+    </div>
+</div>
+    
+    <script src="main.js"></script>
+</body>
+</html>
