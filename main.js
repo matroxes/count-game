@@ -31,7 +31,7 @@ function updateProblem () {
     let bgColor = "rgb(" + x + "," + y + "," + z + ")";
     console.log(bgColor);
 
-    if (window.date == 8) {
+    if (window.date == 10) {
     document.body.style.backgroundImage = 'url("kx8MT.gif")'
     document.body.style.backgroundSize = '100%;'
 } else {
