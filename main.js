@@ -47,9 +47,9 @@ function generateNumber(numb) {
 }
 
 function generateProblem() {
-    window.date = generateNumber(8)
+    window.date = generateNumber(10)
     console.log(date);
-    if (date == 8) {
+    if (date == 10) {
     return {
         randNumbOne: 28,
         randNumbTwo: "09",
