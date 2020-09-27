@@ -1,5 +1,5 @@
 const placeForProblem = document.querySelector('.problem')
-const ourForm = document.querySelector('.form')
+const ourForm = document.querySelector('.form') 
 const field = document.querySelector('.field')
 const points = document.querySelector('.points')
 const sign = document.querySelector('.sign')
