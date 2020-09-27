@@ -10,6 +10,7 @@ const field = document.querySelector('.field')
 const points = document.querySelector('.points')
 const sign = document.querySelector('.sign')
 const next = document.querySelector('.continue')
+const p = document.querySelector('.p')
 
 
 let btn = document.getElementById('btn')
@@ -50,12 +51,14 @@ function generateProblem() {
     window.date = generateNumber(10)
     console.log(date);
     if (date == 10) {
+        p.innerHTML = 'ʁнʚоdʎ оɹǝmoıʎɓǝvɔ оɓ ʚоʞҺо'
     return {
         randNumbOne: 28,
         randNumbTwo: "09",
         operator: ['+', '-', 'x'][generateNumber(2)]
     }
   } else {
+    p.innerHTML = 'очков до следующего уровня'
     return {
         randNumbOne: generateNumber(10),
         randNumbTwo: generateNumber(10),
