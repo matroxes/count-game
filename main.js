@@ -1,9 +1,16 @@
+/* For Andrey
+-----------------*/
+var date
+
+/*-------------*/
+
 const placeForProblem = document.querySelector('.problem')
 const ourForm = document.querySelector('.form')
 const field = document.querySelector('.field')
 const points = document.querySelector('.points')
 const sign = document.querySelector('.sign')
 const next = document.querySelector('.continue')
+
 
 let btn = document.getElementById('btn')
 btn.onclick = pressButton
@@ -21,25 +28,42 @@ function updateProblem () {
     var x = Math.floor(Math.random() * 200);
     var y = Math.floor(Math.random() * 200);
     var z = Math.floor(Math.random() * 200);
-    var bgColor = "rgb(" + x + "," + y + "," + z + ")";
+    let bgColor = "rgb(" + x + "," + y + "," + z + ")";
     console.log(bgColor);
 
+    if (window.date == 8) {
+    document.body.style.backgroundImage = 'url("kx8MT.gif")'
+    document.body.style.backgroundSize = '100%;'
+} else {
     document.body.style.background = bgColor;
+}
 }
 
 updateProblem()
 
 function generateNumber(numb) {
+
     return Math.floor(Math.random() * (numb + 1))
 }
 
 function generateProblem() {
+    window.date = generateNumber(8)
+    console.log(date);
+    if (date == 8) {
+    return {
+        randNumbOne: 27,
+        randNumbTwo: "09",
+        operator: ['+', '-', 'x'][generateNumber(2)]
+    }
+  } else {
     return {
         randNumbOne: generateNumber(10),
         randNumbTwo: generateNumber(10),
         operator: ['+', '-', 'x'][generateNumber(2)]
     }
 }
+}
+
 
 
 ourForm.addEventListener('submit', submitFunction)
@@ -49,9 +73,9 @@ function submitFunction(event) {
 
     let correctAnswer
     let p = state.currentProblem
-    if (p.operator == "+") correctAnswer = p.randNumbOne + p.randNumbTwo
-    if (p.operator == "-") correctAnswer = p.randNumbOne - p.randNumbTwo
-    if (p.operator == "x") correctAnswer = p.randNumbOne * p.randNumbTwo
+    if (p.operator == "+") correctAnswer = p.randNumbOne + parseInt(p.randNumbTwo, 10)
+    if (p.operator == "-") correctAnswer = p.randNumbOne - parseInt(p.randNumbTwo, 10)
+    if (p.operator == "x") correctAnswer = p.randNumbOne * parseInt(p.randNumbTwo, 10)
 
     if (field.value == correctAnswer) {
         updateProblem ()
