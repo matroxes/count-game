@@ -1,43 +1,36 @@
-/* For Andrey
------------------*/
-var date
-
-/*-------------*/
-
 const placeForProblem = document.querySelector('.problem')
 const ourForm = document.querySelector('.form')
 const field = document.querySelector('.field')
 const points = document.querySelector('.points')
 const sign = document.querySelector('.sign')
 const next = document.querySelector('.continue')
-const p = document.querySelector('.p')
+const level = document.querySelector('.level-number')
 
 
 let btn = document.getElementById('btn')
 btn.onclick = pressButton
 
-let state = {
+var state = {
     score: 0,
-    fails: 0
+    fails: 0,
+    level: 1
 }
+
+let r
+let g
+let b
 
 function updateProblem () {
     state.currentProblem = generateProblem()
 
     placeForProblem.innerHTML = `${state.currentProblem.randNumbOne} ${state.currentProblem.operator} ${state.currentProblem.randNumbTwo}`
 
-    var x = Math.floor(Math.random() * 200);
-    var y = Math.floor(Math.random() * 200);
-    var z = Math.floor(Math.random() * 200);
+    var x = Math.floor(Math.random() * (r - rm) + rm);
+    var y = Math.floor(Math.random() * (g - gm) + gm);
+    var z = Math.floor(Math.random() * (b - bm) + bm);
     let bgColor = "rgb(" + x + "," + y + "," + z + ")";
     console.log(bgColor);
-
-    if (window.date == 10) {
-    document.body.style.backgroundImage = 'url("kx8MT.gif")'
-    document.body.style.backgroundSize = '100%;'
-} else {
     document.body.style.background = bgColor;
-}
 }
 
 updateProblem()
@@ -48,24 +41,100 @@ function generateNumber(numb) {
 }
 
 function generateProblem() {
-    window.date = generateNumber(10)
-    console.log(date);
-    if (date == 10) {
-        p.innerHTML = 'ʁнʚоdʎ оɹǝmoıʎɓǝvɔ оɓ ʚоʞҺо'
-    return {
-        randNumbOne: 28,
-        randNumbTwo: "09",
-        operator: ['+', '-', 'x'][generateNumber(2)]
+    if (state.level == 1) {
+        r = 30
+        g = 200
+        b = 30
+        rm = 0
+        gm = 50
+        bm = 0
+        return {
+        randNumbOne: generateNumber(10),
+        randNumbTwo: generateNumber(10),
+        operator: ['+', '-'][generateNumber(1)]
     }
-  } else {
-    p.innerHTML = 'очков до следующего уровня'
-    return {
+    }
+    if (state.level == 2) {
+        r = 30
+        g = 220
+        b = 150
+        rm = 0
+        gm = 100
+        bm = 0
+        return {
         randNumbOne: generateNumber(10),
         randNumbTwo: generateNumber(10),
         operator: ['+', '-', 'x'][generateNumber(2)]
     }
+    }
+    if (state.level == 3) {
+        r = 30
+        g = 150
+        b = 220
+        rm = 0
+        gm = 0
+        bm = 100
+        return {
+        randNumbOne: generateNumber(15),
+        randNumbTwo: generateNumber(12),
+        operator: ['+', '-', 'x', '-'][generateNumber(3)]
+    }
+    }
+    if (state.level == 4) {
+        r = 150
+        g = 30
+        b = 220
+        rm = 0
+        gm = 0
+        bm = 100
+        return {
+        randNumbOne: generateNumber(15),
+        randNumbTwo: generateNumber(15),
+        operator: ['+', '-', 'x', '+', '-'][generateNumber(4)]
+    }
+    }
+    if (state.level == 5) {
+        r = 220
+        g = 30
+        b = 150
+        rm = 100
+        gm = 0
+        bm = 0
+        return {
+        randNumbOne: generateNumber(15),
+        randNumbTwo: generateNumber(20),
+        operator: ['+', 'x', '+', '-'][generateNumber(3)]
+    }
+    }
+    if (state.level == 6) {
+        r = 200
+        g = 30
+        b = 30
+        rm = 50
+        gm = 0
+        bm = 0
+        return {
+        randNumbOne: generateNumber(25),
+        randNumbTwo: generateNumber(25),
+        operator: ['+', '+', 'x', '+', '-'][generateNumber(4)]
+    }
+    }
+    if (state.level > 6) {
+        r = 200
+        g = 200
+        b = 200
+        rm = 0
+        gm = 0
+        bm = 0
+        return {
+        randNumbOne: generateNumber(25),
+        randNumbTwo: generateNumber(25),
+        operator: ['+', '-', 'x'][generateNumber(2)]
+    }
+    }
+
 }
-}
+
 
 
 
@@ -85,13 +154,7 @@ function submitFunction(event) {
         field.value = ''
         state.score++
         let item = document.getElementById(state.score)
-
-        if (window.date == 10) {
-            points.innerHTML = '608ᘔ'
-        } else {
-            points.innerHTML = `${10 - state.score}`
-        }
-
+        points.innerHTML = `${10 - state.score}`
         item.style.backgroundColor = '#2BFE72'
         isEnd()
     } else {
@@ -107,15 +170,19 @@ function submitFunction(event) {
     /* check logick */
     function isEnd() {
         if (points.innerHTML == 0) {
+            state.level++
             resetGame()
             sign.innerHTML = 'Уровень пройден!'
             next.innerHTML = 'Далее'
+            level.innerHTML = state.level
         }
 
         if (state.fails == 3) {
+            state.level = 1
             resetGame()
             sign.innerHTML = 'Ты проиграл!'
             next.innerHTML = 'Заново'
+            level.innerHTML = state.level
 
         }
     }
@@ -135,18 +202,18 @@ function resetGame () {
     state.score = 0;
     state.fails = 0;
     points.innerHTML = 10;
-    let items =  document.getElementById('1'); items.style.backgroundColor = '#fff';
-    items =  document.getElementById('2'); items.style.backgroundColor = '#fff';
-    items =  document.getElementById('3'); items.style.backgroundColor = '#fff';
-    items =  document.getElementById('4'); items.style.backgroundColor = '#fff';
-    items =  document.getElementById('5'); items.style.backgroundColor = '#fff';
-    items =  document.getElementById('6'); items.style.backgroundColor = '#fff';
-    items =  document.getElementById('7'); items.style.backgroundColor = '#fff';
-    items =  document.getElementById('8'); items.style.backgroundColor = '#fff';
-    items =  document.getElementById('9'); items.style.backgroundColor = '#fff';
-    items =  document.getElementById('10'); items.style.backgroundColor = '#fff';
 
-    items =  document.getElementById('1' + '-fail'); items.style.backgroundColor = '#fff';
-    items =  document.getElementById('2' + '-fail'); items.style.backgroundColor = '#fff';
-    items =  document.getElementById('3' + '-fail'); items.style.backgroundColor = '#fff';
+    let box
+    let i = 1
+    while (i < 11) {
+        box =  document.getElementById(i); box.style.backgroundColor = '#fff';
+        i++
+    }
+    i = 1
+    while (i < 4) {
+        box = document.getElementById(i + '-fail'); box.style.backgroundColor = '#fff';
+        i++
+    }
+
 }
+
