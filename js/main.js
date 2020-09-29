@@ -6,7 +6,6 @@ const sign = document.querySelector('.sign')
 const next = document.querySelector('.continue')
 const level = document.querySelector('.level-number')
 
-
 let btn = document.getElementById('btn')
 btn.onclick = pressButton
 
@@ -16,9 +15,26 @@ var state = {
     level: 1
 }
 
-let r
-let g
-let b
+
+function rainbow (item, score) {
+    if (score == 1) {item.style.color = '#ec008c'}
+    if (score == 2) {item.style.color = '#68217a'}
+    if (score == 3) {item.style.color = '#00188f'}
+    if (score == 4) {item.style.color = '#00bcf2'}
+    if (score == 5) {item.style.color = '#00b294'}
+    if (score == 6) {item.style.color = '#009e49'}
+    if (score == 7) {item.style.color = '#bad80a'}
+    if (score == 8) {item.style.color = '#ff8c00'}
+    if (score == 9) {item.style.color = '#e81123'}
+    if (score == 10) {item.style.color = '#ec008c'}
+}
+var r
+var g
+var b
+var rm
+var gm
+var bm
+
 
 function updateProblem () {
     state.currentProblem = generateProblem()
@@ -35,105 +51,15 @@ function updateProblem () {
 
 updateProblem()
 
-function generateNumber(numb) {
+function generateNumber(numb , minNumb) {
+
+    return Math.floor(Math.random() * (numb - minNumb) + minNumb)
+}
+function generateNumberInt(numb) {
 
     return Math.floor(Math.random() * (numb + 1))
 }
 
-function generateProblem() {
-    if (state.level == 1) {
-        r = 30
-        g = 200
-        b = 30
-        rm = 0
-        gm = 50
-        bm = 0
-        return {
-        randNumbOne: generateNumber(10),
-        randNumbTwo: generateNumber(10),
-        operator: ['+', '-'][generateNumber(1)]
-    }
-    }
-    if (state.level == 2) {
-        r = 30
-        g = 220
-        b = 150
-        rm = 0
-        gm = 100
-        bm = 0
-        return {
-        randNumbOne: generateNumber(10),
-        randNumbTwo: generateNumber(10),
-        operator: ['+', '-', 'x'][generateNumber(2)]
-    }
-    }
-    if (state.level == 3) {
-        r = 30
-        g = 150
-        b = 220
-        rm = 0
-        gm = 0
-        bm = 100
-        return {
-        randNumbOne: generateNumber(15),
-        randNumbTwo: generateNumber(12),
-        operator: ['+', '-', 'x', '-'][generateNumber(3)]
-    }
-    }
-    if (state.level == 4) {
-        r = 150
-        g = 30
-        b = 220
-        rm = 0
-        gm = 0
-        bm = 100
-        return {
-        randNumbOne: generateNumber(15),
-        randNumbTwo: generateNumber(15),
-        operator: ['+', '-', 'x', '+', '-'][generateNumber(4)]
-    }
-    }
-    if (state.level == 5) {
-        r = 220
-        g = 30
-        b = 150
-        rm = 100
-        gm = 0
-        bm = 0
-        return {
-        randNumbOne: generateNumber(15),
-        randNumbTwo: generateNumber(20),
-        operator: ['+', 'x', '+', '-'][generateNumber(3)]
-    }
-    }
-    if (state.level == 6) {
-        r = 200
-        g = 30
-        b = 30
-        rm = 50
-        gm = 0
-        bm = 0
-        return {
-        randNumbOne: generateNumber(25),
-        randNumbTwo: generateNumber(25),
-        operator: ['+', '+', 'x', '+', '-'][generateNumber(4)]
-    }
-    }
-    if (state.level > 6) {
-        r = 200
-        g = 200
-        b = 200
-        rm = 0
-        gm = 0
-        bm = 0
-        return {
-        randNumbOne: generateNumber(25),
-        randNumbTwo: generateNumber(25),
-        operator: ['+', '-', 'x'][generateNumber(2)]
-    }
-    }
-
-}
 
 
 
@@ -155,12 +81,14 @@ function submitFunction(event) {
         state.score++
         let item = document.getElementById(state.score)
         points.innerHTML = `${10 - state.score}`
-        item.style.backgroundColor = '#2BFE72'
+
+        rainbow(item, state.score)
+
         isEnd()
     } else {
         state.fails++
         let failItem = document.getElementById(state.fails + '-fail')
-        failItem.style.backgroundColor = '#ff5d5d'
+        failItem.style.color = 'white'
         isEnd()
         placeForProblem.classList.add('wrong-animation')
         setTimeout(() => placeForProblem.classList.remove('wrong-animation'), 331)
@@ -172,7 +100,7 @@ function submitFunction(event) {
         if (points.innerHTML == 0) {
             state.level++
             resetGame()
-            sign.innerHTML = 'Уровень пройден!'
+            sign.innerHTML = `Уровень <div class="level-number level-number-end">${state.level - 1}</div> пройден!`
             next.innerHTML = 'Далее'
             level.innerHTML = state.level
         }
@@ -203,17 +131,86 @@ function resetGame () {
     state.fails = 0;
     points.innerHTML = 10;
 
-    let box
-    let i = 1
-    while (i < 11) {
-        box =  document.getElementById(i); box.style.backgroundColor = '#fff';
-        i++
+    var box
+
+    resetPoints(1)
+
+    if (state.level >= 5) {
+        console.log('level ' + state.level);
+        blackHearts(1)
+    } if (state.level > 10) {
+        burgundyHearts(1)
     }
-    i = 1
-    while (i < 4) {
-        box = document.getElementById(i + '-fail'); box.style.backgroundColor = '#fff';
-        i++
+     if (state.level < 5) {
+       resetHeatrs(1)
     }
 
 }
 
+
+function resetHeatrs (i) {
+    while (i < 4) {
+        box = document.getElementById(i + '-fail'); box.style.color = 'red';
+        i++
+    }
+}
+function resetPoints (i) {
+    while (i < 11) {
+        box = document.getElementById(i); box.style.color = 'white';
+        i++
+    }
+}
+
+
+function blackHearts (i) {
+    if (state.fails == 0) {
+        while (i < 4) {
+        console.log('black - ' + i)
+        box = document.getElementById(i + '-fail'); box.style.color = '#190033';
+        i++
+        }
+    }
+    if (state.fails == 1) {
+        i = 3
+        while (i > 1) {
+        console.log('black - ' + i)
+        box = document.getElementById(i + '-fail'); box.style.color = '#190033';
+        i--
+        }
+    }
+    if (state.fails == 2) {
+        i = 3
+        while (i > 2) {
+        console.log('black - ' + i)
+        box = document.getElementById(i + '-fail'); box.style.color = '#190033';
+        i--
+        }
+    }
+}
+
+
+function burgundyHearts (i) {
+    if (state.fails == 0) {
+        while (i < 4) {
+        console.log('black - ' + i)
+        box = document.getElementById(i + '-fail'); box.style.color = '#900C3F';
+        i++
+        }
+    }
+    if (state.fails == 1) {
+        i = 3
+        while (i > 1) {
+        console.log('black - ' + i)
+        box = document.getElementById(i + '-fail'); box.style.color = '#900C3F';
+        i--
+        }
+    }
+    if (state.fails == 2) {
+        i = 3
+        while (i > 2) {
+        console.log('black - ' + i)
+        box = document.getElementById(i + '-fail'); box.style.color = '#900C3F';
+        i--
+        }
+    }
+}

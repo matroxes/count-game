@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <script src="https://kit.fontawesome.com/cb43a3895c.js" crossorigin="anonymous"></script>
     <link rel="icon" href="pineapple_emoji_emotion_icon_152248.ico">
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
@@ -15,27 +16,30 @@
 
         <p class="problem"></p>
         <form class="form">
-            <input type="number" class="field" autocomplete="off" autofocus id="input">
+            <input type="number" class="field" autocomplete="off" autofocus id="input" placeholder="Введите">
             <button class="submit" id="send">Ответить</button>
         </form>
 
         <div class="cover"><span class="points">10</span><p class="p">очков до следующего уровня</p></div>
     <div class="boxes">
-        <div id="1" class="box"></div>
-        <div id="2" class="box"></div>
-        <div id="3" class="box"></div>
-        <div id="4" class="box"></div>
-        <div id="5" class="box"></div>
-        <div id="6" class="box"></div>
-        <div id="7" class="box"></div>
-        <div id="8" class="box"></div>
-        <div id="9" class="box"></div>
-        <div id="10" class="box"></div>
+        <i id="1" class="far fa-check-circle"></i>
+        <i id="2" class="far fa-check-circle"></i>
+        <i id="3" class="far fa-check-circle"></i>
+        <i id="4" class="far fa-check-circle"></i>
+        <i id="5" class="far fa-check-circle"></i>
+        <i id="6" class="far fa-check-circle"></i>
+        <i id="7" class="far fa-check-circle"></i>
+        <i id="8" class="far fa-check-circle"></i>
+        <i id="9" class="far fa-check-circle"></i>
+        <i id="10" class="far fa-check-circle"></i>
+
     </div>
     <div class="container boxes">
-        <div id="1-fail" class="box box-fail"></div>
-        <div id="2-fail" class="box box-fail"></div>
-        <div id="3-fail" class="box box-fail"></div>
+        <i   id="3-fail" class="fas fa-heart box-fail"></i>
+        <i   id="2-fail" class="fas fa-heart box-fail box-fail-center"></i>
+        <i   id="1-fail" class="fas fa-heart box-fail"></i>
+
+        <!-- <div id="3-fail" class="box box-fail"></div> -->
     </div>
 </div>
 
@@ -46,6 +50,7 @@
     </div>
 </div>
 
+    <script src="js/generate-problem.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
