@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Count Now</title>
 </head>
-<body class="overlay-active">
+<body class="overlay-active battle-screen-hidden">
     <div class="main-ui">
         <div class="level-container">
             <div class="level-box"><p class="level-sign"><div class="level-name">Уровень</div><div class="level-number">1</div></p></div>
@@ -44,9 +44,17 @@
 </div>
 
 <div class="overlay">
+    <button class="mode treat-button">Режим Битва</button>
     <div class="overlay-inner">
         <p class="sign">Привет!</p>
         <button class="continue" id="btn">Играть</button>
+    </div>
+</div>
+
+<div class="battle-screen">
+    <div class="battle-screen-inner">
+        <button class="back-button"><i class="fas fa-long-arrow-alt-left"></i></button>
+        <p class="soon">Скоро...</p>
     </div>
 </div>
 

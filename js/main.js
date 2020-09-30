@@ -5,6 +5,21 @@ const points = document.querySelector('.points')
 const sign = document.querySelector('.sign')
 const next = document.querySelector('.continue')
 const level = document.querySelector('.level-number')
+const mode = document.querySelector('.mode')
+const back = document.querySelector('.back-button')
+
+mode.addEventListener('click', changeMode)
+function changeMode() {
+    document.body.classList.remove("battle-screen-hidden");
+    document.body.classList.add("battle-screen-active");
+}
+
+back.addEventListener('click', backToStartScreen)
+function backToStartScreen() {
+    document.body.classList.add("battle-screen-hidden");
+    document.body.classList.remove("battle-screen-active");
+}
+
 
 let btn = document.getElementById('btn')
 btn.onclick = pressButton

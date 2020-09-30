@@ -45,7 +45,6 @@ body {
 }
 .points {
     margin-right: 10px;
-
     font-family: roboto;
 	font-size: 32px;
 	font-weight: bold;
@@ -228,4 +227,77 @@ input[type=number] {
     font-size: 30px;
     font-weight: bold;
     color: #FFD700;
+}
+
+
+
+/* Mode Changng Button
+*/
+.mode {
+    margin-top: 20px;
+    position: absolute;
+}
+.treat-button {
+    font-family: 'Fascinate Inline', cursive;
+    font-size: 4vmin;
+    appearance: none;
+    background: linear-gradient(to bottom, #F46001, #E14802);
+    border: none;
+    color: #FFF;
+    border-radius: 2em;
+    padding: .6em 1.5em;
+    overflow: hidden;
+    user-select: none;
+    cursor: pointer;
+    z-index: 1;
+    box-shadow: 0 0 1em rgba(white, .2);
+    transition: transform .1s cubic-bezier(.5, 0, .5, 1),
+    box-shadow .2s;
+    outline: none;
+}
+.treat-button:active {
+    transform: scale(0.8) translateY(10%);
+    transition-timing-function: cubic-bezier(.5, 0, .5, 1);
+}
+
+
+/* Battle screen
+*/
+body.battle-screen-active .battle-screen{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+}
+body.battle-screen-hidden .battle-screen {
+    display: none;
+}
+
+
+body.battle-screen-active .battle-screen-inner .back-button {
+    border: 1px solid #1f628d;
+    margin-top: 5px;
+    margin-left: 5px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 20px;
+    background: #3498db;
+    padding: 5px 20px 5px 20px;
+    text-decoration: none;
+    outline: none;
+  }
+  
+body.battle-screen-active .battle-screen .battle-screen-inner .back-button:hover {
+    background: #3cb0fd;
+    text-decoration: none;
+}
+
+body.battle-screen-active .battle-screen-inner .soon {
+    display: flex;
+    justify-content: center;
+    margin-top: 5em;
+    font-family: roboto;
+    font-size: 20px;
 }
